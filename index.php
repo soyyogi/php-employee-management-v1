@@ -1,4 +1,9 @@
 <!-- TODO Application entry point. Login view -->
+<?php
+include_once('./src/library/sessionHelper.php');
+
+// unset($_SESSION['userId']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
