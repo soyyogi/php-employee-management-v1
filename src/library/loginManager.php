@@ -16,7 +16,6 @@ function validateUser($email, $password)
         $_SESSION['userId'] = $userData['users'][0]['userId'];
     } else {
         $_SESSION['loginErrorMessage'] = 'Incorrect credentials!';
-        echo $_SESSION['loginErrorMessage'];
     }
     header("Location: $rootPath");
 }
