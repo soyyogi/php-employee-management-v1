@@ -33,57 +33,63 @@ require_once('./library/employeeController.php');
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="inputName4">Name</label>
-                <input required type="text" class="form-control" id="inputName4" name="name" placeholder="Name">
+                <input required type="text" class="form-control" id="inputName4" name="name" placeholder="Name" value=<?php if ($employeeArray) echo ($employeeArray['name']); ?>>
             </div>
             <div class="form-group col-sm-6">
                 <label for="inputLastName4">Last Name</label>
-                <input required type="text" class="form-control" id="inputLastName4" name="lastName" placeholder="Last Name">
+                <input required type="text" class="form-control" id="inputLastName4" name="lastName" placeholder="Last Name" value=<?php if ($employeeArray) echo ($employeeArray['lastName']); ?>>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="inputEmail4">Email</label>
-                <input required type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
+                <input required type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" value=<?php if ($employeeArray) echo ($employeeArray['email']); ?>>
             </div>
             <div class="form-group col-sm-6">
                 <label for="inputGender">Gender</label>
                 <select required id="inputGender" name="gender" class="form-control">
-                    <option ></option>
-                    <option value="man">Male</option>
-                    <option value="woman">Female</option>
-                    <option value="other">Other</option>
-                    <option value="na">I don't want to specify</option>
+                    <?php if ($employeeArray && $employeeArray['gender'] === 'man') {
+                        echo '<option selected value="man">Man</option>
+                        <option value="woman">Woman</option>';
+                     } elseif ($employeeArray && $employeeArray['gender'] === 'woman') {
+                        echo '<option value="man">Man</option>
+                        <option selected value="woman">Woman</option>';
+                     } else {
+                        echo '<option></option>
+                        <option value="man">Man</option>
+                        <option value="woman">Woman</option>';
+                     } ?>
                 </select>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="inputCity4">City</label>
-                <input required type="text" class="form-control" id="inputCity4" name="city" placeholder="Barcelona">
+                <input required type="text" class="form-control" id="inputCity4" name="city" placeholder="Barcelona" value=<?php if ($employeeArray) echo ($employeeArray['city']); ?>>
             </div>
             <div class="form-group col-sm-6">
                 <label for="inputAddress4">Street Address</label>
-                <input required type="text" class="form-control" id="inputAddress4" name="streetAddress" placeholder="Carrer de ...">
+                <input required type="text" class="form-control" id="inputAddress4" name="streetAddress" placeholder="Carrer de ..." value=<?php if ($employeeArray) echo ($employeeArray['streetAddress']); ?>>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="inputState4">State</label>
-                <input required type="text" class="form-control" id="inputState4" name="state" placeholder="Barcelona">
+                <input required type="text" class="form-control" id="inputState4" name="state" placeholder="Barcelona" value=<?php if ($employeeArray) echo ($employeeArray['state']); ?>>
             </div>
             <div class="form-group col-sm-6">
                 <label for="inputAge4">Age</label>
-                <input required type="number" class="form-control" id="inputAge4" min="16" max="67" name="age" placeholder="24">
+                <input required type="number" class="form-control" id="inputAge4" min="16" max="67" name="age" placeholder="24" value=<?php if ($employeeArray) echo ($employeeArray['age']); ?>>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="inputPostal4">Postal Code</label>
-                <input required type="number" class="form-control" id="inputPostal4" min="10000" max="99999" name="postalCode" placeholder="08001">
+                <input required type="number" class="form-control" id="inputPostal4" name="postalCode" placeholder="08001" value=<?php if ($employeeArray) echo ($employeeArray['postalCode']); ?>>
             </div>
             <div class="form-group col-sm-6">
                 <label for="inputPhone4">Phone Number</label>
-                <input required type="tel" class="form-control" id="inputPhone4" name="phoneNumber" placeholder="692 222 555">
+                <input required type="tel" class="form-control" id="inputPhone4" name="phoneNumber" placeholder="692 222 555" value=<?php if ($employeeArray) echo ($employeeArray['phoneNumber']); ?>>
             </div>
         </div>
         <div class="form-row">
