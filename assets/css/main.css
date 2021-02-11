@@ -128,3 +128,14 @@ button{
     background: none;
     border: none;
 }
+
+/* employee form */
+
+.container {
+    margin-top: 30px;
+    max-width: 80vw;
+}
+
+label {
+    margin-bottom: 10px;
+}
