@@ -35,7 +35,13 @@ function updateEmployee(array $updateEmployee)
         }
     }
     $arrayToJSON = json_encode($employeesArray);
-    file_put_contents($rootPath . '/resources/employees.json', $arrayToJSON);
+    file_put_contents( '../resources/employees.json', $arrayToJSON);
+
+    // try {
+    //     file_put_contents( '../resources/employees.json', $arrayToJSON);
+    // } catch (Exception $e) {
+    //     return 'Exception ' . $e->getMessage();
+    // }
 //     $jsonFile = fopen($rootPath . "/resources/employees.json", "w");
 //     fwrite($jsonFile, $arrayToJSON);
 //     fclose($jsonFile);

@@ -2,8 +2,6 @@
 <?php
 require_once('./library/sessionHelper.php');
 require_once('./library/employeeController.php');
-// print_r($_SESSION["post"]);
-// print_r(json_encode($employeesArray));
 
 ?>
 <!DOCTYPE html>
