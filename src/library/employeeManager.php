@@ -6,7 +6,7 @@
  * @author: Jose Manuel Orts
  * @date: 11/06/2020
  */
-include_once('./sessionHelper.php');
+include_once('./library/sessionHelper.php');
 
 $employeesJSON = file_get_contents($rootPath . '/resources/employees.json');
 
