@@ -30,18 +30,23 @@ init.addEventListener('click', ()=>{
 
 // employee form section
 
-// const firstName = document.querySelector('input[name=name]');
-// const lastName = document.querySelector('input[name=lastName]');
-// const email = document.querySelector('input[name=email]');
-// const gender = document.querySelector('select[name=gender]');
-// const city = document.querySelector('input[name=city]');
-// const streetAddress = document.querySelector('input[name=streetAddress]');
-// const state = document.querySelector('input[name=state]');
-// const age = document.querySelector('input[name=age]');
-// const postalCode = document.querySelector('input[name=postalCode]');
-// const phoneNumber = document.querySelector('input[name=phoneNumber]');
 const employeeForm = document.querySelector('#employee-form');
+
+employeeForm.addEventListener('submit', e => updateEmployee(e));
+
 employeeForm.addEventListener('reset', (e) => {
     e.preventDefault();
     window.location.assign('/php-employee-management-v1');
 })
+
+async function updateEmployee(e) {
+    e.preventDefault();
+    const formdata = new FormData(employeeForm);
+    formdata.append("id", window.location.search.substr(-1,1));
+    const response = await axios({
+        url: '/php-employee-management-v1/src/employee.php',
+        method: 'POST',
+        data: formdata
+    });
+    console.log(response);
+}

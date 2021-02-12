@@ -1,4 +1,5 @@
 <?php
+
 /**
  * EMPLOYEE FUNCTIONS LIBRARY
  *
@@ -13,26 +14,38 @@ $employeesArray = json_decode($employeesJSON, true);
 
 function addEmployee(array $newEmployee)
 {
-// TODO implement it
+    // TODO implement it
 }
 
 
 function deleteEmployee(string $id)
 {
-// TODO implement it
+    // TODO implement it
 }
 
 
 function updateEmployee(array $updateEmployee)
 {
-// TODO implement it
+    print_r($updateEmployee);
+    global $employeesArray;
+    global $rootPath;
+    foreach ($employeesArray as $employee => $array) {
+        if ($array["id"] == $updateEmployee["id"]) {
+            $employeesArray[$employee] = $updateEmployee;
+        }
+    }
+    $arrayToJSON = json_encode($employeesArray);
+    file_put_contents($rootPath . '/resources/employees.json', $arrayToJSON);
+//     $jsonFile = fopen($rootPath . "/resources/employees.json", "w");
+//     fwrite($jsonFile, $arrayToJSON);
+//     fclose($jsonFile);
 }
 
 
 function getEmployee(string $id)
 {
     global $employeesArray;
-    foreach($employeesArray as $employee => $employeeArray) {
+    foreach ($employeesArray as $employee => $employeeArray) {
         $employeeArray['id'] == $id ? $result = $employeeArray : null;
     }
     return $result;
@@ -41,7 +54,7 @@ function getEmployee(string $id)
 
 function removeAvatar($id)
 {
-// TODO implement it
+    // TODO implement it
 }
 
 

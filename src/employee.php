@@ -2,6 +2,8 @@
 <?php
 require_once('./library/sessionHelper.php');
 require_once('./library/employeeController.php');
+// print_r($_SESSION["post"]);
+// print_r(json_encode($employeesArray));
 
 ?>
 <!DOCTYPE html>
@@ -13,13 +15,7 @@ require_once('./library/employeeController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SCRIPT -->
-    <script>
-        const employeeArray = <?php if ($employeeArray) {
-                                    echo json_encode($employeeArray);
-                                } else {
-                                    echo json_encode([]);
-                                } ?>;
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
     <script defer src="../assets/js/index.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -28,7 +24,10 @@ require_once('./library/employeeController.php');
 
 <body>
 
+    <!-- header -->
     <?php require_once("../assets/html/header.html"); ?>
+
+    <!-- employee form -->
     <form id="employee-form" class="container">
         <div class="form-row">
             <div class="form-group col-sm-6">
@@ -51,14 +50,14 @@ require_once('./library/employeeController.php');
                     <?php if ($employeeArray && $employeeArray['gender'] === 'man') {
                         echo '<option selected value="man">Man</option>
                         <option value="woman">Woman</option>';
-                     } elseif ($employeeArray && $employeeArray['gender'] === 'woman') {
+                    } elseif ($employeeArray && $employeeArray['gender'] === 'woman') {
                         echo '<option value="man">Man</option>
                         <option selected value="woman">Woman</option>';
-                     } else {
+                    } else {
                         echo '<option></option>
                         <option value="man">Man</option>
                         <option value="woman">Woman</option>';
-                     } ?>
+                    } ?>
                 </select>
             </div>
         </div>
