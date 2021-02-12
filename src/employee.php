@@ -2,6 +2,10 @@
 <?php
 require_once('./library/sessionHelper.php');
 require_once('./library/employeeController.php');
+if (!isset($_SESSION['userId'])) {
+    header("Location: $rootPath");
+    $_SESSION['loginErrorMessage'] = 'Authentication required!';
+}
 
 ?>
 <!DOCTYPE html>
