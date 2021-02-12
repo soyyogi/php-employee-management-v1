@@ -19,3 +19,11 @@ function validateUser($email, $password)
     }
     header("Location: $rootPath");
 }
+
+function logoutUser ($action) {
+    global $rootPath;
+    if($action === "logout") {
+        session_destroy();
+        header("Location: $rootPath");
+    }
+}
