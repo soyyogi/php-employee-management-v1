@@ -1,5 +1,5 @@
 <?php
-include_once('./sessionHelper.php');
+include_once('./library/sessionHelper.php');
 
 $userJSON = file_get_contents($rootPath . '/resources/users.json');
 
@@ -17,7 +17,7 @@ function validateUser($email, $password)
     } else {
         $_SESSION['loginErrorMessage'] = 'Incorrect credentials!';
     }
-    header("Location: $rootPath");
+    header("Location: http://localhost/php-employee-management-v1");
 }
 
 function logoutUser ($action) {

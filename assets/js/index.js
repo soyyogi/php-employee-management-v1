@@ -27,7 +27,6 @@ var countries = [
 
 
 
-
 function render(){
     $("#jsGrid").jsGrid({
 
@@ -39,7 +38,7 @@ function render(){
         sorting: true,
         paging: true,
 
-        data: clients,
+        data: employeesArray,
 
         // controller: {
         //     loadData: ()=>{
@@ -117,6 +116,8 @@ function render(){
         ]
     });
 }
+
+
 
 
 // employee form section
