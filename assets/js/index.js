@@ -8,120 +8,6 @@
 
 // $('#jsGrid').html('Hola');
 
-var clients = [
-    {
-        "id": "1",
-        "name": "Rack",
-        "lastName": "Lei",
-        "email": "jackon@network.com",
-        "gender": "man",
-        "city": "San Jone",
-        "streetAddress": "126",
-        "state": "CA",
-        "age": "24",
-        "postalCode": "394221",
-        "phoneNumber": "7383627627"
-    },
-    {
-        "id": "2",
-        "name": "John",
-        "lastName": "Doe",
-        "email": "jhondoe@foo.com",
-        "gender": "man",
-        "city": "New York",
-        "streetAddress": "89",
-        "state": "WA",
-        "age": "34",
-        "postalCode": "09889",
-        "phoneNumber": "1283645645"
-    },
-    {
-        "id": "3",
-        "name": "Leila",
-        "lastName": "Mills",
-        "email": "mills@leila.com",
-        "gender": "woman",
-        "city": "San Diego",
-        "streetAddress": "55",
-        "state": "CA",
-        "age": "29",
-        "postalCode": "098765",
-        "phoneNumber": "9983632461"
-    },
-    {
-        "id": 4,
-        "name": "Richard",
-        "lastName": "Desmond",
-        "email": "dismond@foo.com",
-        "gender": "man",
-        "age": 30,
-        "streetAddress": "90",
-        "city": "Salt lake city",
-        "state": "UT",
-        "postalCode": "457320",
-        "phoneNumber": "90876987654"
-    },
-    {
-        "id": 5,
-        "name": "Susan",
-        "lastName": "Smith",
-        "email": "susanmith@baz.com",
-        "gender": "woman",
-        "age": 28,
-        "streetAddress": "43",
-        "city": "Louisville",
-        "state": "KNT",
-        "postalCode": "445321",
-        "phoneNumber": "224355488976"
-    },
-    {
-        "id": 6,
-        "name": "Brad",
-        "lastName": "Simpson",
-        "email": "brad@foo.com",
-        "gender": "man",
-        "age": 40,
-        "streetAddress": "128",
-        "city": "Atlanta",
-        "state": "GEO",
-        "postalCode": "394221",
-        "phoneNumber": "6854634522"
-    },
-    {
-        "id": 7,
-        "name": "Neil",
-        "lastName": "Walker",
-        "email": "walkerneil@baz.com",
-        "gender": "man",
-        "age": 42,
-        "streetAddress": "1",
-        "city": "Nashville",
-        "state": "TN",
-        "postalCode": "90143",
-        "phoneNumber": "45372788192"
-    },
-    {
-        "id": 8,
-        "name": "Robert",
-        "lastName": "Thomson",
-        "email": "jackon@network.com",
-        "gender": "man",
-        "age": 24,
-        "streetAddress": "126",
-        "city": "New Orleans",
-        "state": "LU",
-        "postalCode": "63281",
-        "phoneNumber": "91232876454"
-    }
-];
-
-var countries = [
-    { Name: "", Id: 0 },
-    { Name: "United States", Id: 1 },
-    { Name: "Canada", Id: 2 },
-    { Name: "United Kingdom", Id: 3 }
-];
-
 // const employee = $.ajax({
 //     url: '../src/library/employeeController.php',
 //     method: 'get',
@@ -131,6 +17,15 @@ var countries = [
 //         console.log(objEmployee);
 //     }
 // })
+
+var countries = [
+    { Name: "", Id: 0 },
+    { Name: "United States", Id: 1 },
+    { Name: "Canada", Id: 2 },
+    { Name: "United Kingdom", Id: 3 }
+];
+
+
 
 
 function render(){
@@ -221,18 +116,23 @@ function render(){
             }
         ]
     });
+}
 
 
 // employee form section
 
-const employeeForm = document.querySelector('#employee-form');
 
-employeeForm.addEventListener('submit', e => updateEmployee(e));
+if(document.querySelector('#employee-form')){
+    const employeeForm = document.querySelector('#employee-form');
 
-employeeForm.addEventListener('reset', (e) => {
-    e.preventDefault();
-    window.location.assign('/php-employee-management-v1');
-})
+    employeeForm.addEventListener('submit', e => updateEmployee(e));
+
+    employeeForm.addEventListener('reset', (e) => {
+        e.preventDefault();
+        window.location.assign('/php-employee-management-v1');
+    })
+}
+
 
 async function updateEmployee(e) {
     e.preventDefault();
@@ -251,10 +151,10 @@ async function updateEmployee(e) {
 
 function message (msg) {
     const message = document.createElement('p');
-        message.textContent = msg;
-        message.classList.add('updateMessage');
-        document.body.appendChild(message);
-        setTimeout(() => {
-            document.body.removeChild(message);
-        }, 3000)
+    message.textContent = msg;
+    message.classList.add('updateMessage');
+    document.body.appendChild(message);
+    setTimeout(() => {
+        document.body.removeChild(message);
+    }, 3000)
 }

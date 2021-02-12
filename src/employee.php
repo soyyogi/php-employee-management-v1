@@ -1,7 +1,7 @@
 <!-- TODO Employee view -->
 <?php
-require_once('./library/sessionHelper.php');
-require_once('./library/employeeController.php');
+require_once('/php-employee-management-v1/src/library/sessionHelper.php');
+require_once('/php-employee-management-v1/src/library/employeeController.php');
 if (!isset($_SESSION['userId'])) {
     header("Location: $rootPath");
     $_SESSION['loginErrorMessage'] = 'Authentication required!';
