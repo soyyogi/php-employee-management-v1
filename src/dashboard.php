@@ -6,6 +6,7 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://localhost/php-employee-management-v1");
     $_SESSION['loginErrorMessage'] = 'Authentication required!';
 }
+// include_once('./library/loginManager.php');
 require_once('./library/loginController.php');
 ?>
 

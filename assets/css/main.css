@@ -96,6 +96,8 @@ button{
 .header_container_div__title{
     /* border: 1px solid blue; */
     margin: 0 2em 0 1em;
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .header_container_div__currentPage{
