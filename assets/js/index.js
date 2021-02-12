@@ -48,5 +48,18 @@ async function updateEmployee(e) {
         method: 'POST',
         data: formdata
     });
-    console.log(response);
+
+    if (response.status === 200) {
+        message('Successfully updated employee data!');
+    }
+}
+
+function message (msg) {
+    const message = document.createElement('p');
+        message.textContent = msg;
+        message.classList.add('updateMessage');
+        document.body.appendChild(message);
+        setTimeout(() => {
+            document.body.removeChild(message);
+        }, 3000)
 }
