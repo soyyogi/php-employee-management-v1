@@ -139,3 +139,13 @@ button{
 label {
     margin-bottom: 10px;
 }
+
+button[type=reset] {
+    background-color: #666;
+    color: #fff;
+}
+
+button[type=reset]:hover {
+    background-color: #555;
+    color: #fff;
+}

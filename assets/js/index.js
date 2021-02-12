@@ -2,7 +2,7 @@
 //     const dashboard = document.getElementsByClassName('header_container_div_currentPage__dashboard');
 //     const employee = document.getElementsByClassName('header_container_div_currentPage__employee');
 
-const { post } = require("jquery");
+// const { post } = require("jquery");
 
 //     let dashboarFocus = dashboard.focus();
 //     let employeFocus = employee.focus();
@@ -40,3 +40,8 @@ init.addEventListener('click', ()=>{
 // const age = document.querySelector('input[name=age]');
 // const postalCode = document.querySelector('input[name=postalCode]');
 // const phoneNumber = document.querySelector('input[name=phoneNumber]');
+const employeeForm = document.querySelector('#employee-form');
+employeeForm.addEventListener('reset', (e) => {
+    e.preventDefault();
+    window.location.assign('/php-employee-management-v1');
+})

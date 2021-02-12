@@ -29,7 +29,7 @@ require_once('./library/employeeController.php');
 <body>
 
     <?php require_once("../assets/html/header.html"); ?>
-    <form class="container">
+    <form id="employee-form" class="container">
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="inputName4">Name</label>
@@ -95,7 +95,7 @@ require_once('./library/employeeController.php');
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary">Return</button>
+                <button type="reset" class="btn btn-secondary">Return</button>
             </div>
         </div>
     </form>
