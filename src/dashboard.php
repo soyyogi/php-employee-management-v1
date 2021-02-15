@@ -7,7 +7,7 @@ if (!isset($_SESSION['userId'])) {
     $_SESSION['loginErrorMessage'] = 'Authentication required!';
 }
 // include_once('./library/loginManager.php');
-require_once('./library/loginController.php');
+// require_once('./library/loginController.php');
 ?>
 
 <!DOCTYPE html>
@@ -26,27 +26,27 @@ require_once('./library/loginController.php');
 </head>
 
 <body>
-    
     <!-- header -->
     <?php require_once("../assets/html/header.html"); ?>
     <div id="jsGrid"></div>
-    
-    
-    
-    
-    
+
+
+
+
+
     <!-- SCRIPT -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <!-- JS-Gris script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <script>
         const employeesArray = <?php if ($employeesArray) {
-                                    echo json_encode($employeesArray);
-                                } else {
-                                    echo json_encode([]);
-                                } ?>;
+            echo json_encode($employeesArray);
+        } else {
+            echo json_encode([]);
+        } ?>;
     </script>
     <script src="../assets/js/index.js"></script>
 </body>

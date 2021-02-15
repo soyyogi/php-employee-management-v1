@@ -35,7 +35,7 @@ if (isset($_SESSION['userId'])) {
             </div>
 
             <!-- Login Form -->
-            <form action="http://localhost/php-employee-management-v1/src/dashboard.php" method="POST">
+            <form action="/php-employee-management-v1/src/library/loginController.php" method="POST">
                 <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email address" required>
                 <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
                 <input type="submit" class="fadeIn fourth" value="Log In">

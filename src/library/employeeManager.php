@@ -21,14 +21,25 @@ function addEmployee(array $newEmployee)
 function deleteEmployee(string $id)
 {
     // TODO implement it
+    global $employeesArray;
+    global $deletedEmployee;
+    foreach ($employeesArray as $employee => $array) {
+        if ($array["id"] == $id) {
+            $deletedEmployee = [$employee => $employeesArray[$employee]];
+        }
+    }
+    $newEmployeesArray = array_diff_assoc($employeesArray,$deletedEmployee);
+    $newEmployeesArray = array_values($newEmployeesArray);
+
+    $arrayToJSON = json_encode($newEmployeesArray);
+    file_put_contents( '../resources/employees.json', $arrayToJSON);
+
 }
 
 
 function updateEmployee(array $updateEmployee)
 {
-    print_r($updateEmployee);
     global $employeesArray;
-    global $rootPath;
     foreach ($employeesArray as $employee => $array) {
         if ($array["id"] == $updateEmployee["id"]) {
             $employeesArray[$employee] = $updateEmployee;
@@ -37,14 +48,6 @@ function updateEmployee(array $updateEmployee)
     $arrayToJSON = json_encode($employeesArray);
     file_put_contents( '../resources/employees.json', $arrayToJSON);
 
-    // try {
-    //     file_put_contents( '../resources/employees.json', $arrayToJSON);
-    // } catch (Exception $e) {
-    //     return 'Exception ' . $e->getMessage();
-    // }
-//     $jsonFile = fopen($rootPath . "/resources/employees.json", "w");
-//     fwrite($jsonFile, $arrayToJSON);
-//     fclose($jsonFile);
 }
 
 
@@ -77,4 +80,3 @@ function getNextIdentifier(array $employeesCollection): int
 // TODO implement it
 return count($employeesCollection) + 1;
 }
-

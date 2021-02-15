@@ -17,7 +17,7 @@ function validateUser($email, $password)
     } else {
         $_SESSION['loginErrorMessage'] = 'Incorrect credentials!';
     }
-    header("Location: http://localhost/php-employee-management-v1");
+    header("Location: /php-employee-management-v1/src/dashboard.php");
 }
 
 function logoutUser ($action) {

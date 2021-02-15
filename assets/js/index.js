@@ -1,122 +1,41 @@
-// const { css } = require("jquery");
-
-// const { post } = require("jquery");
-
-//     let dashboarFocus = dashboard.focus();
-//     let employeFocus = employee.focus();
 
 
-// $('#jsGrid').html('Hola');
+function renderTable(array){
+    const jsGrid = document.getElementById('jsGrid');
+    jsGrid.innerHTML = '';
+    const table = document.createElement('table');
 
-// const employee = $.ajax({
-//     url: '../src/library/employeeController.php',
-//     method: 'get',
-//     success: function(res){
-//         // console.log(res);
-//         objEmployee = JSON.parse(res);
-//         console.log(objEmployee);
-//     }
-// })
+    array.forEach( employee => {
+        const row = document.createElement('tr');
+        for (e in employee) {
+            const tableData = document.createElement('td');
+            tableData.textContent = employee[e];
+            tableData.setAttribute('data', e)
+            row.appendChild(tableData);
+        };
+        const tableData = document.createElement('td');
+        const editButton = document.createElement('button');
+        editButton.innerHTML = '&#9820;';
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '&#9932;';
+        tableData.appendChild(editButton);
+        tableData.appendChild(deleteButton);
 
-var countries = [
-    { Name: "", Id: 0 },
-    { Name: "United States", Id: 1 },
-    { Name: "Canada", Id: 2 },
-    { Name: "United Kingdom", Id: 3 }
-];
-
-
-
-function render(){
-    $("#jsGrid").jsGrid({
-
-        width: "100%",
-        height: "800px",
-
-        inserting: true,
-        editing: true,
-        sorting: true,
-        paging: true,
-
-        data: employeesArray,
-
-        // controller: {
-        //     loadData: ()=>{
-        //         console.log(clients);
-        //     },
-        //     // insertItem: ,
-        //     // updateItem:
-        //     // deleteItem:
-        // },
-
-        fields: [
-            {
-                name: "name",
-                type: "text",
-                width: 150,
-                validate: "required",
-                align: 'center'
-            },
-            {
-                name: "email",
-                type: "email",
-                width: 200,
-                validate: "required",
-                align: 'center'
-            },
-            {
-                name: "age",
-                type: "number",
-                width: 50,
-                validate: function(value){
-                    if(value > 0){
-                        return true;
-                    }
-                },
-                align: 'center'
-            },
-            {
-                name: "streetAddress",
-                type: "number",
-                width: 50,
-                validate: 'required',
-                align: 'center'
-            },
-            {
-                name: "city",
-                type: "text",
-                width: 150,
-                validate: 'required',
-                align: 'center'
-            },
-            {
-                name: "state",
-                type: "text",
-                width: 150,
-                validate: 'required',
-                align: 'center'
-            },
-            {
-                name: "postalCode",
-                type: "number",
-                width: 50,
-                validate: 'required',
-                align: 'center'
-            },
-            {
-                name: "phoneNumber",
-                type: "number",
-                width: 50,
-                validate: 'required',
-                align: 'center'
-            },
-            {
-                type: "control"
-            }
-        ]
+        row.appendChild(tableData);
+        table.appendChild(row);
+        // EventListenner Delete and Edit
+        editButton.addEventListener('click', ()=>{
+            window.location.assign(`/php-employee-management-v1/src/employee.php?id=${employee['id']}`);
+        })
+        deleteButton.addEventListener('click', e => deleteEmployee(employee['id']));
     });
-}
 
+    jsGrid.appendChild(table);
+}
+if(document.querySelector('#jsGrid')){
+    renderTable(employeesArray);
+
+}
 
 
 // employee form section
@@ -135,6 +54,8 @@ if(document.querySelector('#employee-form')){
 
 
 async function updateEmployee(e) {
+    const employeeForm = document.querySelector('#employee-form');
+
     e.preventDefault();
     const formdata = new FormData(employeeForm);
     formdata.append("id", window.location.search.substr(-1,1));
@@ -157,4 +78,20 @@ function message (msg) {
     setTimeout(() => {
         document.body.removeChild(message);
     }, 3000)
+}
+
+async function deleteEmployee(id){
+    const formdata = new FormData();
+    formdata.append("id", id);
+    formdata.append('action', 'delete');
+    const response = await axios({
+        method: 'POST',
+        url: '/php-employee-management-v1/src/dashboard.php',
+        data: formdata
+    })
+    if (response.status === 200) {
+        message('Successfully delete employee data!');
+        console.log(response);
+    }
+    await window.location.assign('/php-employee-management-v1/src/dashboard.php');
 }
