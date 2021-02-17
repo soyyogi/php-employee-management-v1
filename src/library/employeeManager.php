@@ -11,10 +11,45 @@ include_once('./library/sessionHelper.php');
 $employeesJSON = file_get_contents($rootPath . '/resources/employees.json');
 
 $employeesArray = json_decode($employeesJSON, true);
+// print_r($employeesArray);
 
 function addEmployee(array $newEmployee)
 {
     // TODO implement it
+    global $employeesArray;
+    foreach($employeesArray as $employee => $array){
+        // if($array['id'] == $newEmployee){
+        if(isset($_POST['name'])) {
+
+            $id = (count($employeesArray));
+            print_r($id);
+            $id = $id - 1;
+
+            $newEmployeeId = ($employeesArray[$id]['id']) + 1;
+
+            $newEmployee = array(
+                'id' => $newEmployeeId,
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'age' => $_POST['age'],
+                'streetAddress' => $_POST['streetAddress'],
+                'city' => $_POST['city'],
+                'state' => $_POST['state'],
+                'postalCode' => $_POST['postalCode'],
+                'phoneNumber' => $_POST['phoneNumber']
+            );
+
+            $employeesArray[] = $newEmployee;
+            $finalData = json_encode($employeesArray);
+            file_put_contents('../../resources/employees.json', $finalData);
+            print_r($finalData);
+        }
+
+        }
+
+
+
+
 }
 
 
@@ -47,7 +82,6 @@ function updateEmployee(array $updateEmployee)
     }
     $arrayToJSON = json_encode($employeesArray);
     file_put_contents( '../resources/employees.json', $arrayToJSON);
-
 }
 
 

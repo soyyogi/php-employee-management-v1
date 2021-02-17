@@ -3,10 +3,82 @@
 function renderTable(array){
     const jsGrid = document.getElementById('jsGrid');
     jsGrid.innerHTML = '';
-    const table = document.createElement('table');
+    table = document.createElement('table');
+    table.classList.add('table_employees');
+    // Table head
+    const thead = document.createElement('thead');
+    thead.classList.add('table_employee__head');
+    const headRow = document.createElement('tr');
+    headRow.classList.add('table_employee__row');
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+    // Id Table
+    const tdId = document.createElement('td');
+    tdId.textContent = 'Id';
+    tdId.classList.add('table_employee_row__id');
+    headRow.appendChild(tdId);
+    // Name Table
+    const tdName = document.createElement('td');
+    tdName.textContent = 'Name';
+    tdName.classList.add('table_employee_row__name');
+    headRow.appendChild(tdName);
+    // secondName Table
+    const tdlastName = document.createElement('td');
+    tdlastName.textContent = 'Last Name';
+    tdlastName.classList.add('table_employee_row__lastName');
+    headRow.appendChild(tdlastName);
+    // Email Table
+    const tdEmail = document.createElement('td');
+    tdEmail.textContent = 'Email';
+    tdEmail.classList.add('table_employee_row__email');
+    headRow.appendChild(tdEmail);
+    // Gender Table
+    const tdGender = document.createElement('td');
+    tdGender.textContent = 'Gender';
+    tdGender.classList.add('table_employee_row__gender');
+    headRow.appendChild(tdGender);
+    // City Table
+    const tdCity = document.createElement('td');
+    tdCity.textContent = 'City';
+    tdCity.classList.add('table_employee_row__city');
+    headRow.appendChild(tdCity);
+    // Street Table
+    const tdStreet = document.createElement('td');
+    tdStreet.textContent = 'Street No.';
+    tdStreet.classList.add('table_employee_row__street');
+    headRow.appendChild(tdStreet);
+    // State Table
+    const tdState = document.createElement('td');
+    tdState.textContent = 'State';
+    tdState.classList.add('table_employee_row__state');
+    headRow.appendChild(tdState);
+    // Age Table
+    const tdAge = document.createElement('td');
+    tdAge.textContent = 'Age';
+    tdAge.classList.add('table_employee_row__age');
+    headRow.appendChild(tdAge);
+    // Postal Code Table
+    const tdPostalCode = document.createElement('td');
+    tdPostalCode.textContent = 'Postal Code';
+    tdPostalCode.classList.add('table_employee_row__postalCode');
+    headRow.appendChild(tdPostalCode);
+    // Phone Number Table
+    const tdPhoneNumber = document.createElement('td');
+    tdPhoneNumber.textContent = 'Phone Number';
+    tdPhoneNumber.classList.add('table_employee_row__phoneNumber');
+    headRow.appendChild(tdPhoneNumber);
+    // Add Button Table
+    const tdAdd = document.createElement('td');
+    tdAdd.innerHTML = `<button class="" id="submit"></button>`;
+    tdAdd.classList.add('table_employee_row__addEmployee');
+    headRow.appendChild(tdAdd);
+
+    // Event Listenner Add Employee
+    tdAdd.addEventListener('click', ()=>addEmployee());
 
     array.forEach( employee => {
         const row = document.createElement('tr');
+        row.classList.add('table_employee__row');
         for (e in employee) {
             const tableData = document.createElement('td');
             tableData.textContent = employee[e];
@@ -94,4 +166,43 @@ async function deleteEmployee(id){
         console.log(response);
     }
     await window.location.assign('/php-employee-management-v1/src/dashboard.php');
+}
+
+async function addEmployee() {
+
+    const thead = document.querySelector('.table_employee__head');
+    const trInput = document.createElement('tr');
+        trInput.classList.add('table_employee__row');
+        trInput.innerHTML = `
+        <form action="" method="post" id="form">
+            <td class="table_employee_input"><output type="text name=""></td>
+            <td class="table_employee_input"><input type="text name="name"></td>
+            <td class="table_employee_input"><input type="text name="lastName"></td>
+            <td class="table_employee_input"><input type="text name="email"></td>
+            <td class="table_employee_input"><input type="text name="gender"></td>
+            <td class="table_employee_input"><input type="text name="city"></td>
+            <td class="table_employee_input"><input type="text name="street"></td>
+            <td class="table_employee_input"><input type="text name="state"></td>
+            <td class="table_employee_input"><input type="text name="age"></td>
+            <td class="table_employee_input"><input type="text name="postalCode"></td>
+            <td class="table_employee_input"><input type="text name="phoneNumber"></td>
+            <input type="submit" value="add" class="table_employee_input">
+        </form>
+        `;
+        thead.appendChild(trInput);
+
+        const formInput = document.querySelector('#form');
+
+        const formdata = new FormData(formInput);
+        // Get inputs?
+        const response = await axios({
+            url: '/php-employee-management-v1/src/dashboard.php',
+            method: 'POST',
+            data: formdata
+        });
+
+        if (response.status === 200) {
+            message('Successfully added employee data!');
+        }
+
 }

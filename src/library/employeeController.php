@@ -20,3 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("HTTP/1.1 200 OK");
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['id']) && !isset($_POST['action'])) {
+        addEmployee($_POST);
+        header("HTTP/1.1 200 OK");
+    }
+}
