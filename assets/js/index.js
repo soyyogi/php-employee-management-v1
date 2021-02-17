@@ -83,7 +83,11 @@ function renderTable(array){
             const tableData = document.createElement('td');
             tableData.textContent = employee[e];
             tableData.setAttribute('data', e)
-            row.appendChild(tableData);
+            if(e == 'id') {
+                row.prepend(tableData);
+            } else {
+                row.appendChild(tableData);
+            }
         };
         const tableData = document.createElement('td');
         const editButton = document.createElement('button');
