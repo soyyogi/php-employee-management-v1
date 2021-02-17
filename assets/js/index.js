@@ -9,7 +9,7 @@ function renderTable(array){
     const thead = document.createElement('thead');
     thead.classList.add('table_employee__head');
     const headRow = document.createElement('tr');
-    headRow.classList.add('table_employee__row');
+    headRow.classList.add('table_employee__rowHead');
     thead.appendChild(headRow);
     table.appendChild(thead);
     // Id Table
@@ -81,15 +81,19 @@ function renderTable(array){
         row.classList.add('table_employee__row');
         for (e in employee) {
             const tableData = document.createElement('td');
+            tableData.classList.add('table_employee__data');
             tableData.textContent = employee[e];
             tableData.setAttribute('data', e)
             row.appendChild(tableData);
         };
         const tableData = document.createElement('td');
+        tableData.classList.add('btn_edit_delete')
         const editButton = document.createElement('button');
-        editButton.innerHTML = '&#9820;';
+        editButton.classList.add('edit_btn');
+        editButton.innerHTML = '<i class="fa fa-trash"></i>';
         const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = '&#9932;';
+        deleteButton.classList.add('delete_btn');
+        // deleteButton.innerHTML = '&#9932;';
         tableData.appendChild(editButton);
         tableData.appendChild(deleteButton);
 
