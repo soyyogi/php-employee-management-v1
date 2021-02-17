@@ -84,7 +84,11 @@ function renderTable(array){
             tableData.classList.add('table_employee__data');
             tableData.textContent = employee[e];
             tableData.setAttribute('data', e)
-            row.appendChild(tableData);
+            if(e == 'id') {
+                row.prepend(tableData);
+            } else {
+                row.appendChild(tableData);
+            }
         };
         const tableData = document.createElement('td');
         tableData.classList.add('btn_edit_delete')
